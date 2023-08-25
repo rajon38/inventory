@@ -31,7 +31,17 @@ app.use(express.urlencoded({limit: '50mb'}));
 app.use(bodyParser.json())
 
 // Request Rate Limit
-const limiter= rateLimit({windowMs:15*60*1000,max:3000})
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 3000,
+    keyGenerator: (req) => {
+        // Extract IP address from the X-Forwarded-For header safely
+        const forwardedFor = req.headers['x-forwarded-for'];
+        const ipArray = forwardedFor ? forwardedFor.split(/\s*,\s*/) : [];
+        const ipAddress = ipArray.length > 0 ? ipArray[0] : req.connection.remoteAddress;
+        return ipAddress;
+    }
+});
 app.use(limiter)
 
 // Enable trust proxy to correctly identify client IP behind proxies
