@@ -34,13 +34,19 @@ app.use(bodyParser.json())
 const limiter= rateLimit({windowMs:15*60*1000,max:3000})
 app.use(limiter)
 
+// Enable trust proxy to correctly identify client IP behind proxies
+app.set('trust proxy', true);
+
 // Mongo DB Database Connection
 let URI="mongodb+srv://<username>:<password>@cluster0.aw6azwi.mongodb.net/inventory?retryWrites=true&w=majority";
 let OPTION={user:'rashedul',pass:'170174Rajon',autoIndex:true}
-mongoose.connect(URI,OPTION,(error)=>{
-    console.log("Connection Success")
-    console.log(error)
-})
+mongoose.connect(URI, OPTION, (error) => {
+    if (error) {
+        console.error("Connection Error:", error);
+    } else {
+        console.log("Connection Success");
+    }
+});
 
 
 // Routing Implement
