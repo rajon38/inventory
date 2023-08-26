@@ -11,7 +11,7 @@ const AxiosHeader={headers:{"token":getToken()}}
 export async function ReturnListRequest(pageNo, perPage, searchKeyword) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "https://inventory-nu-six.vercel.app/ReturnsList/"+pageNo+"/"+perPage+"/"+searchKeyword;
+        let URL = "http://localhost:9000/api/v1/ReturnsList/"+pageNo+"/"+perPage+"/"+searchKeyword;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -38,7 +38,7 @@ export async function ReturnListRequest(pageNo, perPage, searchKeyword) {
 export async function CustomerDropDownRequest() {
     try {
         store.dispatch(ShowLoader());
-        let URL = "https://inventory-nu-six.vercel.app/CustomersDropDown";
+        let URL = "http://localhost:9000/api/v1/CustomersDropDown";
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -61,7 +61,7 @@ export async function CustomerDropDownRequest() {
 export async function ProductDropDownRequest() {
     try {
         store.dispatch(ShowLoader());
-        let URL = "https://inventory-nu-six.vercel.app/ProductsDropDown";
+        let URL = "http://localhost:9000/api/v1/ProductsDropDown";
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -86,7 +86,7 @@ export async function CreateReturnRequest(ParentBody,ChildsBody) {
     try {
         store.dispatch(ShowLoader())
         let PostBody={"Parent":ParentBody, "Childs":ChildsBody}
-        let URL = "https://inventory-nu-six.vercel.app/CreateReturns"
+        let URL = "http://localhost:9000/api/v1/CreateReturns"
         const result = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {

@@ -16,7 +16,7 @@ const AxiosHeader={headers:{"token":getToken()}}
 export async function ExpenseListRequest(pageNo, perPage, searchKeyword) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "https://inventory-nu-six.vercel.app/ExpensesList/"+pageNo+"/"+perPage+"/"+searchKeyword;
+        let URL = "http://localhost:9000/api/v1/ExpensesList/"+pageNo+"/"+perPage+"/"+searchKeyword;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -43,7 +43,7 @@ export async function ExpenseListRequest(pageNo, perPage, searchKeyword) {
 export async function ExpenseTypeDropDownRequest() {
     try {
         store.dispatch(ShowLoader())
-        let URL = "https://inventory-nu-six.vercel.app/ExpenseTypesDropDown";
+        let URL = "http://localhost:9000/api/v1/ExpenseTypesDropDown";
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -67,9 +67,9 @@ export async function ExpenseTypeDropDownRequest() {
 export async function CreateExpenseRequest(PostBody,ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "https://inventory-nu-six.vercel.app/CreateExpenses"
+        let URL = "http://localhost:9000/api/v1/CreateExpenses"
         if(ObjectID!==0){
-            URL = "https://inventory-nu-six.vercel.app/UpdateExpenses/"+ObjectID;
+            URL = "http://localhost:9000/api/v1/UpdateExpenses/"+ObjectID;
         }
         debugger;
         const result = await axios.post(URL,PostBody,AxiosHeader)
@@ -96,7 +96,7 @@ export async function CreateExpenseRequest(PostBody,ObjectID) {
 export async function FillExpenseFormRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "https://inventory-nu-six.vercel.app/ExpenseDetailsByID/"+ObjectID;
+        let URL = "http://localhost:9000/api/v1/ExpenseDetailsByID/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -124,7 +124,7 @@ export async function FillExpenseFormRequest(ObjectID) {
 export async function DeleteExpenseRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "https://inventory-nu-six.vercel.app/DeleteExpense/"+ObjectID;
+        let URL = "http://localhost:9000/api/v1/DeleteExpense/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader());
         if (result.status === 200 && result.data['status'] === "success") {

@@ -1,1 +1,1 @@
-export const BaseURL="https://inventory-nu-six.vercel.app/";
+export const BaseURL="http://localhost:9000/api/v1";

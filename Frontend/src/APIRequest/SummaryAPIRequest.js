@@ -16,7 +16,7 @@ const AxiosHeader={headers:{"token":getToken()}}
 export async function ExpensesSummary(){
     try {
         store.dispatch(ShowLoader())
-        let URL="https://inventory-nu-six.vercel.app/ExpensesSummary";
+        let URL="http://localhost:9000/api/v1/ExpensesSummary";
         let res=await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if(res.status===200){
@@ -36,7 +36,7 @@ export async function ExpensesSummary(){
 export async function ReturnSummary(){
     try {
         store.dispatch(ShowLoader())
-        let URL="https://inventory-nu-six.vercel.app/ReturnSummary";
+        let URL="http://localhost:9000/api/v1/ReturnSummary";
         let res=await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if(res.status===200){
@@ -56,7 +56,7 @@ export async function ReturnSummary(){
 export async function SaleSummary(){
     try {
         store.dispatch(ShowLoader())
-        let URL="https://inventory-nu-six.vercel.app/SalesSummary";
+        let URL="http://localhost:9000/api/v1/SalesSummary";
         let res=await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if(res.status===200){
@@ -76,7 +76,7 @@ export async function SaleSummary(){
 export async function PurchaseSummary(){
     try {
         store.dispatch(ShowLoader())
-        let URL="https://inventory-nu-six.vercel.app/PurchaseSummary";
+        let URL="http://localhost:9000/api/v1/PurchaseSummary";
         let res=await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if(res.status===200){
