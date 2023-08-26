@@ -12,7 +12,7 @@ const AxiosHeader={headers:{"token":getToken()}}
 export async function LoginRequest(email,password){
    try {
        store.dispatch(ShowLoader())
-       let URL="http://localhost:9000/api/v1/Login";
+       let URL="https://inventoryapp-m4ut.onrender.com/Login";
        let PostBody={"email":email,"password":password}
        let res =await axios.post(URL,PostBody);
        setToken(res.data['token']);
@@ -34,7 +34,7 @@ export async function LoginRequest(email,password){
 export async function RegistrationRequest(email,firstName,lastName,mobile,password,photo){
     try {
         store.dispatch(ShowLoader())
-        let URL="http://localhost:9000/api/v1/Registration";
+        let URL="https://inventoryapp-m4ut.onrender.com/Registration";
         let PostBody={email:email,firstName:firstName,lastName:lastName,mobile:mobile,password:password, photo:photo}
         let res=await axios.post(URL,PostBody)
         store.dispatch(HideLoader())
