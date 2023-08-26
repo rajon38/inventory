@@ -4,7 +4,7 @@ import axios from "axios";
 import {ErrorToast, SuccessToast} from "../helper/FormHelper";
 import {getToken} from "../helper/SessionHelper";
 import {OnChangeExpenseTypeInput, ResetExpenseTypeFormValue, SetExpenseTypeList, SetExpenseTypeListTotal} from "../redux/state-slice/expensetype-slice";
-//import {BaseURL} from "../helper/config";
+import {BaseURL} from "../helper/config";
 
 
 const AxiosHeader={headers:{"token":getToken()}}
@@ -12,7 +12,7 @@ const AxiosHeader={headers:{"token":getToken()}}
 export async function ExpenseTypeListRequest(pageNo, perPage, searchKeyword) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "http://localhost:9000/api/v1/ExpenseTypesList/"+pageNo+"/"+perPage+"/"+searchKeyword;
+        let URL = BaseURL+"/ExpenseTypesList/"+pageNo+"/"+perPage+"/"+searchKeyword;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -37,9 +37,9 @@ export async function ExpenseTypeListRequest(pageNo, perPage, searchKeyword) {
 export async function CreateExpenseTypeRequest(PostBody,ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "http://localhost:9000/api/v1/CreateExpenseTypes"
+        let URL = BaseURL+"/CreateExpenseTypes"
         if(ObjectID!==0){
-            URL = "http://localhost:9000/api/v1/UpdateExpenseTypes/"+ObjectID;
+            URL = BaseURL+"/UpdateExpenseTypes/"+ObjectID;
         }
         const result = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
@@ -69,7 +69,7 @@ export async function CreateExpenseTypeRequest(PostBody,ObjectID) {
 export async function FillExpenseTypeFormRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "http://localhost:9000/api/v1/ExpenseTypesDetailsByID/"+ObjectID;
+        let URL = BaseURL+"/ExpenseTypesDetailsByID/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -93,7 +93,7 @@ export async function FillExpenseTypeFormRequest(ObjectID) {
 export async function DeleteExpenseTypeRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "http://localhost:9000/api/v1/DeleteExpenseTypes/"+ObjectID;
+        let URL = BaseURL+"/DeleteExpenseTypes/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "associate") {

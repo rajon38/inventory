@@ -4,14 +4,14 @@ import axios from "axios";
 import {ErrorToast, SuccessToast} from "../helper/FormHelper";
 import {getToken} from "../helper/SessionHelper";
 import {OnChangeCustomerInput, ResetFormValue, SetCustomerList, SetCustomerListTotal} from "../redux/state-slice/customer-slice";
-//import {BaseURL} from "../helper/config";
+import {BaseURL} from "../helper/config";
 
 const AxiosHeader={headers:{"token":getToken()}}
 
 export async function CustomerListRequest(pageNo, perPage, searchKeyword) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "http://localhost:9000/api/v1/CustomersList/"+pageNo+"/"+perPage+"/"+searchKeyword;
+        let URL = BaseURL+"/CustomersList/"+pageNo+"/"+perPage+"/"+searchKeyword;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -37,9 +37,9 @@ export async function CustomerListRequest(pageNo, perPage, searchKeyword) {
 export async function CreateCustomerRequest(PostBody,ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "http://localhost:9000/api/v1/CreateCustomers"
+        let URL = BaseURL+"/CreateCustomers"
         if(ObjectID!==0){
-            URL = "http://localhost:9000/api/v1/UpdateCustomers/"+ObjectID;
+            URL = BaseURL+"/UpdateCustomers/"+ObjectID;
         }
         const result = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
@@ -70,7 +70,7 @@ export async function CreateCustomerRequest(PostBody,ObjectID) {
 export async function FillCustomerFormRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "http://localhost:9000/api/v1/CustomersDetailsByID/"+ObjectID;
+        let URL = BaseURL+"/CustomersDetailsByID/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -98,7 +98,7 @@ export async function FillCustomerFormRequest(ObjectID) {
 export async function DeleteCustomerRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "http://localhost:9000/api/v1/DeleteCustomer/"+ObjectID;
+        let URL = BaseURL+"/DeleteCustomer/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "associate") {

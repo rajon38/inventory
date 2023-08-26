@@ -11,7 +11,7 @@ import {
     SetProductList,
     SetProductListTotal
 } from "../redux/state-slice/product-slice";
-//import {BaseURL} from "../helper/config";
+import {BaseURL} from "../helper/config";
 import {OnChangeExpenseInput} from "../redux/state-slice/expense-slice";
 
 const AxiosHeader={headers:{"token":getToken()}}
@@ -19,7 +19,7 @@ const AxiosHeader={headers:{"token":getToken()}}
 export async function ProductListRequest(pageNo, perPage, searchKeyword) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "http://localhost:9000/api/v1/ProductsList/"+pageNo+"/"+perPage+"/"+searchKeyword;
+        let URL = BaseURL+"/ProductsList/"+pageNo+"/"+perPage+"/"+searchKeyword;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -50,9 +50,9 @@ export async function ProductListRequest(pageNo, perPage, searchKeyword) {
 export async function CreateProductRequest(PostBody,ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "http://localhost:9000/api/v1/CreateProducts"
+        let URL = BaseURL+"/CreateProducts"
         if(ObjectID!==0){
-            URL = "http://localhost:9000/api/v1/UpdateProducts/"+ObjectID;
+            URL = BaseURL+"/UpdateProducts/"+ObjectID;
         }
         const result = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
@@ -77,7 +77,7 @@ export async function CreateProductRequest(PostBody,ObjectID) {
 export async function FillProductFormRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "http://localhost:9000/api/v1/ProductsDetailsByID/"+ObjectID;
+        let URL = BaseURL+"/ProductsDetailsByID/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -106,7 +106,7 @@ export async function FillProductFormRequest(ObjectID) {
 export async function ProductCategoryDropDownRequest() {
     try {
         store.dispatch(ShowLoader());
-        let URL = "http://localhost:9000/api/v1/CategoriesDropDown";
+        let URL = BaseURL+"/CategoriesDropDown";
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -131,7 +131,7 @@ export async function ProductCategoryDropDownRequest() {
 export async function ProductBrandDropDownRequest() {
     try {
         store.dispatch(ShowLoader());
-        let URL = "http://localhost:9000/api/v1/BrandDropDown";
+        let URL = BaseURL+"/BrandDropDown";
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -156,7 +156,7 @@ export async function ProductBrandDropDownRequest() {
 export async function DeleteProductRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "http://localhost:9000/api/v1/DeleteProduct/"+ObjectID;
+        let URL = BaseURL+"/DeleteProduct/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader());
         if (result.status === 200 && result.data['status'] === "associate") {

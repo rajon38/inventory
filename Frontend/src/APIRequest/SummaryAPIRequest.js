@@ -9,17 +9,22 @@ import {
     SetReturnChart,
     SetReturnTotal, SetSaleChart, SetSaleTotal
 } from "../redux/state-slice/dashboard-slice";
-//import {BaseURL} from "../helper/config";
+import {BaseURL} from "../helper/config";
 const AxiosHeader={headers:{"token":getToken()}}
 
 
 export async function ExpensesSummary(){
     try {
+        debugger;
         store.dispatch(ShowLoader())
-        let URL="http://localhost:9000/api/v1/ExpensesSummary";
+        debugger;
+        let URL=BaseURL+"/ExpensesSummary";
+        debugger;
         let res=await axios.get(URL,AxiosHeader)
+        debugger;
         store.dispatch(HideLoader())
         if(res.status===200){
+            debugger;
             store.dispatch(SetExpenseChart(res.data['data'][0]['Last30Days']))
             store.dispatch(SetExpenseTotal(res.data['data'][0]['Total'][0]['TotalAmount']))
         }
@@ -36,7 +41,7 @@ export async function ExpensesSummary(){
 export async function ReturnSummary(){
     try {
         store.dispatch(ShowLoader())
-        let URL="http://localhost:9000/api/v1/ReturnSummary";
+        let URL=BaseURL+"/ReturnSummary";
         let res=await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if(res.status===200){
@@ -56,7 +61,7 @@ export async function ReturnSummary(){
 export async function SaleSummary(){
     try {
         store.dispatch(ShowLoader())
-        let URL="http://localhost:9000/api/v1/SalesSummary";
+        let URL=BaseURL+"/SalesSummary";
         let res=await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if(res.status===200){
@@ -76,7 +81,7 @@ export async function SaleSummary(){
 export async function PurchaseSummary(){
     try {
         store.dispatch(ShowLoader())
-        let URL="http://localhost:9000/api/v1/PurchaseSummary";
+        let URL=BaseURL+"/PurchaseSummary";
         let res=await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if(res.status===200){
