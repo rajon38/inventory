@@ -9,14 +9,14 @@ import {
     SetReturnChart,
     SetReturnTotal, SetSaleChart, SetSaleTotal
 } from "../redux/state-slice/dashboard-slice";
-import {BaseURL} from "../helper/config";
+//import {BaseURL} from "../helper/config";
 const AxiosHeader={headers:{"token":getToken()}}
 
 
 export async function ExpensesSummary(){
     try {
         store.dispatch(ShowLoader())
-        let URL=BaseURL+"/ExpensesSummary";
+        let URL="https://inventory-nu-six.vercel.app/ExpensesSummary";
         let res=await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if(res.status===200){
@@ -36,7 +36,7 @@ export async function ExpensesSummary(){
 export async function ReturnSummary(){
     try {
         store.dispatch(ShowLoader())
-        let URL=BaseURL+"/ReturnSummary";
+        let URL="https://inventory-nu-six.vercel.app/ReturnSummary";
         let res=await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if(res.status===200){
@@ -56,7 +56,7 @@ export async function ReturnSummary(){
 export async function SaleSummary(){
     try {
         store.dispatch(ShowLoader())
-        let URL=BaseURL+"/SalesSummary";
+        let URL="https://inventory-nu-six.vercel.app/SalesSummary";
         let res=await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if(res.status===200){
@@ -76,7 +76,7 @@ export async function SaleSummary(){
 export async function PurchaseSummary(){
     try {
         store.dispatch(ShowLoader())
-        let URL=BaseURL+"/PurchaseSummary";
+        let URL="https://inventory-nu-six.vercel.app/PurchaseSummary";
         let res=await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if(res.status===200){

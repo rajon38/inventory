@@ -2,6 +2,7 @@
   "name": "client-side",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://inventory-nu-six.vercel.app/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

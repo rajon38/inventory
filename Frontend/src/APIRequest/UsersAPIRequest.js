@@ -4,30 +4,21 @@ import store from "../redux/store/store";
 import {HideLoader, ShowLoader} from "../redux/state-slice/settings-slice";
 import {getToken, setEmail, setOTP, setToken, setUserDetails} from "../helper/SessionHelper";
 import {SetProfile} from "../redux/state-slice/profile-slice";
-import {BaseURL} from "../helper/config";
+//import {BaseURL} from "../helper/config";
 
 
 const AxiosHeader={headers:{"token":getToken()}}
 
 export async function LoginRequest(email,password){
    try {
-       debugger;
        store.dispatch(ShowLoader())
-       debugger;
-       let URL=BaseURL+"/Login";
-       debugger;
+       let URL="https://inventory-nu-six.vercel.app/Login";
        let PostBody={"email":email,"password":password}
-       debugger;
        let res =await axios.post(URL,PostBody);
-       debugger;
        setToken(res.data['token']);
-       debugger;
        setUserDetails(res.data['data']);
-       debugger;
        SuccessToast("Login Success")
-       debugger;
        store.dispatch(HideLoader())
-       debugger;
        return true;
    }
    catch (e) {
@@ -43,7 +34,7 @@ export async function LoginRequest(email,password){
 export async function RegistrationRequest(email,firstName,lastName,mobile,password,photo){
     try {
         store.dispatch(ShowLoader())
-        let URL=BaseURL+"/Registration";
+        let URL="https://inventory-nu-six.vercel.app/Registration";
         let PostBody={email:email,firstName:firstName,lastName:lastName,mobile:mobile,password:password, photo:photo}
         let res=await axios.post(URL,PostBody)
         store.dispatch(HideLoader())
@@ -78,7 +69,7 @@ export async function RegistrationRequest(email,firstName,lastName,mobile,passwo
 export async function GetProfileDetails(){
     try {
         store.dispatch(ShowLoader())
-        let URL=BaseURL+"/ProfileDetails";
+        let URL="https://inventory-nu-six.vercel.app/ProfileDetails";
         let res=await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if(res.status===200){
@@ -97,7 +88,7 @@ export async function GetProfileDetails(){
 export async function ProfileUpdateRequest(email,firstName,lastName,mobile,password,photo){
     try {
         store.dispatch(ShowLoader())
-        let URL=BaseURL+"/ProfileUpdate";
+        let URL="https://inventory-nu-six.vercel.app/ProfileUpdate";
         let PostBody={email:email,firstName:firstName,lastName:lastName,mobile:mobile,password:password,photo:photo}
         let UserDetails={email:email,firstName:firstName,lastName:lastName,mobile:mobile,photo:photo};
         let res=await axios.post(URL,PostBody,AxiosHeader);
@@ -123,7 +114,7 @@ export async function ProfileUpdateRequest(email,firstName,lastName,mobile,passw
 export async function RecoverVerifyEmailRequest(email){
     try {
         store.dispatch(ShowLoader())
-        let URL=BaseURL+"/RecoverVerifyEmail/"+email;
+        let URL="https://inventory-nu-six.vercel.app/RecoverVerifyEmail/"+email;
         let res=await axios.get(URL);
         store.dispatch(HideLoader())
         if(res.status===200){
@@ -153,7 +144,7 @@ export async function RecoverVerifyOTPRequest(email,OTP){
     debugger;
     try {
         store.dispatch(ShowLoader());
-        let URL=BaseURL+"/RecoverVerifyOTP/"+email+"/"+OTP;
+        let URL="https://inventory-nu-six.vercel.app/RecoverVerifyOTP/"+email+"/"+OTP;
         let res=await axios.get(URL);
         store.dispatch(HideLoader())
         if(res.status===200){
@@ -183,7 +174,7 @@ export async function RecoverVerifyOTPRequest(email,OTP){
 export async function RecoverResetPassRequest(email,OTP,password){
     try {
         store.dispatch(ShowLoader())
-        let URL=BaseURL+"/RecoverResetPass";
+        let URL="https://inventory-nu-six.vercel.app/RecoverResetPass";
         let PostBody={email:email,OTP:OTP,password:password};
         let res=await axios.post(URL,PostBody);
         store.dispatch(HideLoader())

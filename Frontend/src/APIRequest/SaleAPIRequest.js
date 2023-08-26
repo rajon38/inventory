@@ -4,13 +4,13 @@ import axios from "axios";
 import {ErrorToast, SuccessToast} from "../helper/FormHelper";
 import {getToken} from "../helper/SessionHelper";
 import {SetCustomerDropDown, SetProductDropDown, SetSaleList, SetSaleListTotal} from "../redux/state-slice/sale-slice";
-import {BaseURL} from "../helper/config";
+//import {BaseURL} from "../helper/config";
 const AxiosHeader={headers:{"token":getToken()}}
 
 export async function SaleListRequest(pageNo, perPage, searchKeyword) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/SalesList/"+pageNo+"/"+perPage+"/"+searchKeyword;
+        let URL = "https://inventory-nu-six.vercel.app/SalesList/"+pageNo+"/"+perPage+"/"+searchKeyword;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -35,7 +35,7 @@ export async function SaleListRequest(pageNo, perPage, searchKeyword) {
 export async function CustomerDropDownRequest() {
     try {
         store.dispatch(ShowLoader());
-        let URL = BaseURL+"/CustomersDropDown";
+        let URL = "https://inventory-nu-six.vercel.app/CustomersDropDown";
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -58,7 +58,7 @@ export async function CustomerDropDownRequest() {
 export async function ProductDropDownRequest() {
     try {
         store.dispatch(ShowLoader());
-        let URL = BaseURL+"/ProductsDropDown";
+        let URL = "https://inventory-nu-six.vercel.app/ProductsDropDown";
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -84,7 +84,7 @@ export async function CreateSaleRequest(ParentBody,ChildsBody) {
 
         store.dispatch(ShowLoader())
         let PostBody={"Parent":ParentBody, "Childs":ChildsBody}
-        let URL = BaseURL+"/CreateSales"
+        let URL = "https://inventory-nu-six.vercel.app/CreateSales"
         const result = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
