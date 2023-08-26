@@ -4,8 +4,7 @@ import store from "../redux/store/store";
 import {HideLoader, ShowLoader} from "../redux/state-slice/settings-slice";
 import {getToken, setEmail, setOTP, setToken, setUserDetails} from "../helper/SessionHelper";
 import {SetProfile} from "../redux/state-slice/profile-slice";
-// import {BaseURL} from "../helper/config";
-const BaseURL = "https://inventoryapp-m4ut.onrender.com/api/v1"
+import {BaseURL} from "../helper/config";
 
 
 const AxiosHeader={headers:{"token":getToken()}}

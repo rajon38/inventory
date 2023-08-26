@@ -2,7 +2,7 @@
   "name": "client-side",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:9000/api/v1",
+  "proxy": "https://inventoryapp-m4ut.onrender.com/api/v1",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

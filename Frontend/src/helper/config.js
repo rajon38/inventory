@@ -1,1 +1,1 @@
-export const BaseURL="http://localhost:9000/api/v1";
+export const BaseURL="https://inventoryapp-m4ut.onrender.com/api/v1";
