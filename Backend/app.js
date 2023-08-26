@@ -50,7 +50,7 @@ app.set('trust proxy', true);
 // Mongo DB Database Connection
 let URI="mongodb+srv://<username>:<password>@cluster0.aw6azwi.mongodb.net/inventory?retryWrites=true&w=majority";
 let OPTION={user:'rashedul',pass:'170174Rajon',autoIndex:true}
-mongoose.set('strictQuery', true)
+mongoose.set('strictQuery', false)
 mongoose.connect(URI, OPTION, (error) => {
     if (error) {
         console.error("Connection Error:", error);
