@@ -4,13 +4,13 @@ import axios from "axios";
 import {ErrorToast, SuccessToast} from "../helper/FormHelper";
 import {getToken} from "../helper/SessionHelper";
 import {SetBrandList, SetBrandListTotal,ResetBrandFormValue,OnChangeBrandInput} from "../redux/state-slice/brand-slice";
-import {BaseURL} from "../helper/config";
+//import {BaseURL} from "../helper/config";
 const AxiosHeader={headers:{"token":getToken()}}
 
 export async function BrandListRequest(pageNo, perPage, searchKeyword) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/BrandList/"+pageNo+"/"+perPage+"/"+searchKeyword;
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/BrandList/"+pageNo+"/"+perPage+"/"+searchKeyword;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -36,9 +36,9 @@ export async function BrandListRequest(pageNo, perPage, searchKeyword) {
 export async function CreateBrandRequest(PostBody,ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/CreateBrand"
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/CreateBrand"
         if(ObjectID!==0){
-            URL = BaseURL+"/UpdateBrand/"+ObjectID;
+            URL = "https://inventoryapp-m4ut.onrender.com/api/v1/UpdateBrand/"+ObjectID;
         }
         const result = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
@@ -68,7 +68,7 @@ export async function CreateBrandRequest(PostBody,ObjectID) {
 export async function FillBrandFormRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/BrandDetailsByID/"+ObjectID;
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/BrandDetailsByID/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -92,7 +92,7 @@ export async function FillBrandFormRequest(ObjectID) {
 export async function DeleteBrandRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/DeleteBrand/"+ObjectID;
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/DeleteBrand/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "associate") {

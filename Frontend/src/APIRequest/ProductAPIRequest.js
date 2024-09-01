@@ -11,15 +11,15 @@ import {
     SetProductList,
     SetProductListTotal
 } from "../redux/state-slice/product-slice";
-import {BaseURL} from "../helper/config";
-import {OnChangeExpenseInput} from "../redux/state-slice/expense-slice";
+//import {BaseURL} from "../helper/config";
+//import {OnChangeExpenseInput} from "../redux/state-slice/expense-slice";
 
 const AxiosHeader={headers:{"token":getToken()}}
 
 export async function ProductListRequest(pageNo, perPage, searchKeyword) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/ProductsList/"+pageNo+"/"+perPage+"/"+searchKeyword;
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/ProductsList/"+pageNo+"/"+perPage+"/"+searchKeyword;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -50,9 +50,9 @@ export async function ProductListRequest(pageNo, perPage, searchKeyword) {
 export async function CreateProductRequest(PostBody,ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/CreateProducts"
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/CreateProducts"
         if(ObjectID!==0){
-            URL = BaseURL+"/UpdateProducts/"+ObjectID;
+            URL = "https://inventoryapp-m4ut.onrender.com/api/v1/UpdateProducts/"+ObjectID;
         }
         const result = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
@@ -77,7 +77,7 @@ export async function CreateProductRequest(PostBody,ObjectID) {
 export async function FillProductFormRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/ProductsDetailsByID/"+ObjectID;
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/ProductsDetailsByID/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -106,7 +106,7 @@ export async function FillProductFormRequest(ObjectID) {
 export async function ProductCategoryDropDownRequest() {
     try {
         store.dispatch(ShowLoader());
-        let URL = BaseURL+"/CategoriesDropDown";
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/CategoriesDropDown";
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -131,7 +131,7 @@ export async function ProductCategoryDropDownRequest() {
 export async function ProductBrandDropDownRequest() {
     try {
         store.dispatch(ShowLoader());
-        let URL = BaseURL+"/BrandDropDown";
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/BrandDropDown";
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -156,7 +156,7 @@ export async function ProductBrandDropDownRequest() {
 export async function DeleteProductRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/DeleteProduct/"+ObjectID;
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/DeleteProduct/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader());
         if (result.status === 200 && result.data['status'] === "associate") {

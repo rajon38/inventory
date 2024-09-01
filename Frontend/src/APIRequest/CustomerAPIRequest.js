@@ -4,14 +4,14 @@ import axios from "axios";
 import {ErrorToast, SuccessToast} from "../helper/FormHelper";
 import {getToken} from "../helper/SessionHelper";
 import {OnChangeCustomerInput, ResetFormValue, SetCustomerList, SetCustomerListTotal} from "../redux/state-slice/customer-slice";
-import {BaseURL} from "../helper/config";
+//import {BaseURL} from "../helper/config";
 
 const AxiosHeader={headers:{"token":getToken()}}
 
 export async function CustomerListRequest(pageNo, perPage, searchKeyword) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/CustomersList/"+pageNo+"/"+perPage+"/"+searchKeyword;
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/CustomersList/"+pageNo+"/"+perPage+"/"+searchKeyword;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -37,9 +37,9 @@ export async function CustomerListRequest(pageNo, perPage, searchKeyword) {
 export async function CreateCustomerRequest(PostBody,ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/CreateCustomers"
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/CreateCustomers"
         if(ObjectID!==0){
-            URL = BaseURL+"/UpdateCustomers/"+ObjectID;
+            URL = "https://inventoryapp-m4ut.onrender.com/api/v1/UpdateCustomers/"+ObjectID;
         }
         const result = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
@@ -70,7 +70,7 @@ export async function CreateCustomerRequest(PostBody,ObjectID) {
 export async function FillCustomerFormRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/CustomersDetailsByID/"+ObjectID;
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/CustomersDetailsByID/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -98,7 +98,7 @@ export async function FillCustomerFormRequest(ObjectID) {
 export async function DeleteCustomerRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = BaseURL+"/DeleteCustomer/"+ObjectID;
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/DeleteCustomer/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "associate") {

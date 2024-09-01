@@ -1,6 +1,6 @@
 import store from "../redux/store/store";
 import {HideLoader, ShowLoader} from "../redux/state-slice/settings-slice";
-import {BaseURL} from "../helper/config";
+//import {BaseURL} from "../helper/config";
 import axios from "axios";
 
 import {ErrorToast} from "../helper/FormHelper";
@@ -13,7 +13,7 @@ export async function ExpensesByDateRequest(FormData,ToDate) {
     try {
         store.dispatch(ShowLoader())
         let PostBody={"FormDate":FormData+"T00:00:00.000+00:00","ToDate":ToDate+"T00:00:00.000+00:00"}
-        let URL = BaseURL+"/ExpensesByDate";
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/ExpensesByDate";
         const result = await axios.post(URL,PostBody,AxiosHeader);
         store.dispatch(HideLoader());
         if (result.status === 200 && result.data['status']==="success") {
@@ -33,7 +33,7 @@ export async function SalesByDateRequest(FormData,ToDate) {
     try {
         store.dispatch(ShowLoader())
         let PostBody={"FormDate":FormData+"T00:00:00.000+00:00","ToDate":ToDate+"T00:00:00.000+00:00"}
-        let URL = BaseURL+"/SalesByDate";
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/SalesByDate";
         const result = await axios.post(URL,PostBody,AxiosHeader);
         store.dispatch(HideLoader());
         if (result.status === 200 && result.data['status']==="success") {
@@ -53,7 +53,7 @@ export async function PurchaseByDateRequest(FormData,ToDate) {
     try {
         store.dispatch(ShowLoader())
         let PostBody={"FormDate":FormData+"T00:00:00.000+00:00","ToDate":ToDate+"T00:00:00.000+00:00"}
-        let URL = BaseURL+"/PurchaseByDate";
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/PurchaseByDate";
         const result = await axios.post(URL,PostBody,AxiosHeader);
         store.dispatch(HideLoader());
         if (result.status === 200 && result.data['status']==="success") {
@@ -72,7 +72,7 @@ export async function ReturnByDateRequest(FormData,ToDate) {
     try {
         store.dispatch(ShowLoader())
         let PostBody={"FormDate":FormData+"T00:00:00.000+00:00","ToDate":ToDate+"T00:00:00.000+00:00"}
-        let URL = BaseURL+"/ReturnByDate";
+        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/ReturnByDate";
         const result = await axios.post(URL,PostBody,AxiosHeader);
         store.dispatch(HideLoader());
         if (result.status === 200 && result.data['status']==="success") {
