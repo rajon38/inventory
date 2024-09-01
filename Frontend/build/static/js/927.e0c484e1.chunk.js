@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkclient_side=self.webpackChunkclient_side||[]).push([[927],{893:function(e,c,n){n.r(c),n.d(c,{default:function(){return t}});n(2791);var s=n.p+"static/media/404.2d47255f361c6cf188c4.png",i=n(184),t=function(){return(0,i.jsx)("div",{className:"center-screen",children:(0,i.jsx)("img",{className:"animated fadeIn",src:s})})}}}]);
+//# sourceMappingURL=927.e0c484e1.chunk.js.map
