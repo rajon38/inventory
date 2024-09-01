@@ -12,7 +12,7 @@ const AxiosHeader={headers:{"token":getToken()}}
 export async function LoginRequest(email,password){
    try {
        store.dispatch(ShowLoader())
-       let URL="https://inventoryapp-m4ut.onrender.com/api/v1/Login";
+       let URL="https://inventory-nu-six.vercel.app/api/v1/Login";
        let PostBody={"email":email,"password":password}
        let res =await axios.post(URL,PostBody);
        setToken(res.data['token']);
@@ -34,7 +34,7 @@ export async function LoginRequest(email,password){
 export async function RegistrationRequest(email,firstName,lastName,mobile,password,photo){
     try {
         store.dispatch(ShowLoader())
-        let URL="https://inventoryapp-m4ut.onrender.com/api/v1/registration";
+        let URL="https://inventory-nu-six.vercel.app/api/v1/Registration";
         let PostBody={email:email,firstName:firstName,lastName:lastName,mobile:mobile,password:password, photo:photo}
         let res=await axios.post(URL,PostBody)
         store.dispatch(HideLoader())
@@ -69,7 +69,7 @@ export async function RegistrationRequest(email,firstName,lastName,mobile,passwo
 export async function GetProfileDetails(){
     try {
         store.dispatch(ShowLoader())
-        let URL="https://inventoryapp-m4ut.onrender.com/api/v1/ProfileDetails";
+        let URL="https://inventory-nu-six.vercel.app/api/v1/ProfileDetails";
         let res=await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if(res.status===200){
@@ -88,7 +88,7 @@ export async function GetProfileDetails(){
 export async function ProfileUpdateRequest(email,firstName,lastName,mobile,password,photo){
     try {
         store.dispatch(ShowLoader())
-        let URL="https://inventoryapp-m4ut.onrender.com/api/v1/ProfileUpdate";
+        let URL="https://inventory-nu-six.vercel.app/api/v1/ProfileUpdate";
         let PostBody={email:email,firstName:firstName,lastName:lastName,mobile:mobile,password:password,photo:photo}
         let UserDetails={email:email,firstName:firstName,lastName:lastName,mobile:mobile,photo:photo};
         let res=await axios.post(URL,PostBody,AxiosHeader);
@@ -114,7 +114,7 @@ export async function ProfileUpdateRequest(email,firstName,lastName,mobile,passw
 export async function RecoverVerifyEmailRequest(email){
     try {
         store.dispatch(ShowLoader())
-        let URL="https://inventoryapp-m4ut.onrender.com/api/v1/RecoverVerifyEmail/"+email;
+        let URL="https://inventory-nu-six.vercel.app/api/v1/RecoverVerifyEmail/"+email;
         let res=await axios.get(URL);
         store.dispatch(HideLoader())
         if(res.status===200){
@@ -144,7 +144,7 @@ export async function RecoverVerifyOTPRequest(email,OTP){
     debugger;
     try {
         store.dispatch(ShowLoader());
-        let URL="https://inventoryapp-m4ut.onrender.com/api/v1/RecoverVerifyOTP/"+email+"/"+OTP;
+        let URL="https://inventory-nu-six.vercel.app/api/v1/RecoverVerifyOTP/"+email+"/"+OTP;
         let res=await axios.get(URL);
         store.dispatch(HideLoader())
         if(res.status===200){
@@ -174,7 +174,7 @@ export async function RecoverVerifyOTPRequest(email,OTP){
 export async function RecoverResetPassRequest(email,OTP,password){
     try {
         store.dispatch(ShowLoader())
-        let URL="https://inventoryapp-m4ut.onrender.com/api/v1/RecoverResetPass";
+        let URL="https://inventory-nu-six.vercel.app/api/v1/RecoverResetPass";
         let PostBody={email:email,OTP:OTP,password:password};
         let res=await axios.post(URL,PostBody);
         store.dispatch(HideLoader())

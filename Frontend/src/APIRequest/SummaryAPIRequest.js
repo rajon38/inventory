@@ -18,7 +18,7 @@ export async function ExpensesSummary(){
         debugger;
         store.dispatch(ShowLoader())
         debugger;
-        let URL="https://inventoryapp-m4ut.onrender.com/api/v1/ExpensesSummary";
+        let URL="https://inventory-nu-six.vercel.app/api/v1/ExpensesSummary";
         debugger;
         let res=await axios.get(URL,AxiosHeader)
         debugger;
@@ -41,7 +41,7 @@ export async function ExpensesSummary(){
 export async function ReturnSummary(){
     try {
         store.dispatch(ShowLoader())
-        let URL="https://inventoryapp-m4ut.onrender.com/api/v1/ReturnSummary";
+        let URL="https://inventory-nu-six.vercel.app/api/v1/ReturnSummary";
         let res=await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if(res.status===200){
@@ -61,7 +61,7 @@ export async function ReturnSummary(){
 export async function SaleSummary(){
     try {
         store.dispatch(ShowLoader())
-        let URL="https://inventoryapp-m4ut.onrender.com/api/v1/SalesSummary";
+        let URL="https://inventory-nu-six.vercel.app/api/v1/SalesSummary";
         let res=await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if(res.status===200){
@@ -81,7 +81,7 @@ export async function SaleSummary(){
 export async function PurchaseSummary(){
     try {
         store.dispatch(ShowLoader())
-        let URL="https://inventoryapp-m4ut.onrender.com/api/v1/PurchaseSummary";
+        let URL="https://inventory-nu-six.vercel.app/api/v1/PurchaseSummary";
         let res=await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if(res.status===200){

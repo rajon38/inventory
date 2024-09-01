@@ -12,7 +12,7 @@ const AxiosHeader={headers:{"token":getToken()}}
 export async function SupplierListRequest(pageNo, perPage, searchKeyword) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/SuppliersList/"+pageNo+"/"+perPage+"/"+searchKeyword;
+        let URL = "https://inventory-nu-six.vercel.app/api/v1/SuppliersList/"+pageNo+"/"+perPage+"/"+searchKeyword;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -39,9 +39,9 @@ export async function SupplierListRequest(pageNo, perPage, searchKeyword) {
 export async function CreateSupplierRequest(PostBody,ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/CreateSuppliers"
+        let URL = "https://inventory-nu-six.vercel.app/api/v1/CreateSuppliers"
         if(ObjectID!==0){
-            URL = "https://inventoryapp-m4ut.onrender.com/api/v1/UpdateSuppliers/"+ObjectID;
+            URL = "https://inventory-nu-six.vercel.app/api/v1/UpdateSuppliers/"+ObjectID;
         }
         const result = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
@@ -72,7 +72,7 @@ export async function CreateSupplierRequest(PostBody,ObjectID) {
 export async function FillSupplierFormRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/SuppliersDetailsByID/"+ObjectID;
+        let URL = "https://inventory-nu-six.vercel.app/api/v1/SuppliersDetailsByID/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -100,7 +100,7 @@ export async function FillSupplierFormRequest(ObjectID) {
 export async function DeleteSupplierRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/DeleteSupplier/"+ObjectID;
+        let URL = "https://inventory-nu-six.vercel.app/api/v1/DeleteSupplier/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "associate") {

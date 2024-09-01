@@ -10,7 +10,7 @@ const AxiosHeader={headers:{"token":getToken()}}
 export async function CategoryListRequest(pageNo, perPage, searchKeyword) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/CategoriesList/"+pageNo+"/"+perPage+"/"+searchKeyword;
+        let URL = "https://inventory-nu-six.vercel.app/api/v1/CategoriesList/"+pageNo+"/"+perPage+"/"+searchKeyword;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -35,9 +35,9 @@ export async function CategoryListRequest(pageNo, perPage, searchKeyword) {
 export async function CreateCategoryRequest(PostBody,ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/CreateCategories"
+        let URL = "https://inventory-nu-six.vercel.app/api/v1/CreateCategories"
         if(ObjectID!==0){
-            URL = "https://inventoryapp-m4ut.onrender.com/api/v1/UpdateCategories/"+ObjectID;
+            URL = "https://inventory-nu-six.vercel.app/api/v1/UpdateCategories/"+ObjectID;
         }
         const result = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
@@ -70,7 +70,7 @@ export async function CreateCategoryRequest(PostBody,ObjectID) {
 export async function FillCategoryFormRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/CategoriesDetailsByID/"+ObjectID;
+        let URL = "https://inventory-nu-six.vercel.app/api/v1/CategoriesDetailsByID/"+ObjectID;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -94,7 +94,7 @@ export async function FillCategoryFormRequest(ObjectID) {
 export async function DeleteCategoryRequest(ObjectID) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/DeleteCategories/"+ObjectID;
+        let URL = "https://inventory-nu-six.vercel.app/api/v1/DeleteCategories/"+ObjectID;
         let result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "associate") {

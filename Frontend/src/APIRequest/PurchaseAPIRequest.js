@@ -11,7 +11,7 @@ const AxiosHeader={headers:{"token":getToken()}}
 export async function PurchaseListRequest(pageNo, perPage, searchKeyword) {
     try {
         store.dispatch(ShowLoader())
-        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/PurchasesList/"+pageNo+"/"+perPage+"/"+searchKeyword;
+        let URL = "https://inventory-nu-six.vercel.app/api/v1/PurchasesList/"+pageNo+"/"+perPage+"/"+searchKeyword;
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -37,7 +37,7 @@ export async function PurchaseListRequest(pageNo, perPage, searchKeyword) {
 export async function ProductDropDownRequest() {
     try {
         store.dispatch(ShowLoader());
-        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/ProductsDropDown";
+        let URL = "https://inventory-nu-six.vercel.app/api/v1/ProductsDropDown";
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -61,7 +61,7 @@ export async function ProductDropDownRequest() {
 export async function SupplierDropDownRequest() {
     try {
         store.dispatch(ShowLoader());
-        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/SuppliersDropDown";
+        let URL = "https://inventory-nu-six.vercel.app/api/v1/SuppliersDropDown";
         const result = await axios.get(URL,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
@@ -86,7 +86,7 @@ export async function CreatePurchaseRequest(ParentBody,ChildsBody) {
     try {
         store.dispatch(ShowLoader())
         let PostBody={"Parent":ParentBody, "Childs":ChildsBody}
-        let URL = "https://inventoryapp-m4ut.onrender.com/api/v1/CreatePurchases"
+        let URL = "https://inventory-nu-six.vercel.app/api/v1/CreatePurchases"
         const result = await axios.post(URL,PostBody,AxiosHeader)
         store.dispatch(HideLoader())
         if (result.status === 200 && result.data['status'] === "success") {
